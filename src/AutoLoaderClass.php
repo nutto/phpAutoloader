@@ -99,7 +99,8 @@ class AutoLoaderClass
         }
 
         // 尝试通过默认的路径加载文件
-        $file = self::$root_dir . '/' . $class . '.php';
+        $file = self::$root_dir . '/' . str_replace('\\', '/', $class) . '.php';
+
         if ($this->requireFile($file)) {
             return $file;
         }
@@ -118,7 +119,7 @@ class AutoLoaderClass
     public function loadMappedFile($prefix, $relative_path) {
         if (isset($this->mapped_prefix[$prefix])) {
             foreach ($this->mapped_prefix[$prefix] as $root_dir) {
-                $file = $root_dir . '/' . $relative_path . '.php';
+                $file = $root_dir . '/' . str_replace('\\', '/', $relative_path) . '.php';
                 if ($this->requireFile($file)) {
                     return $file;
                 }

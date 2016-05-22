@@ -77,10 +77,10 @@ class BaseTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testCaseSensitivity()
-    {
-        $this->assertFalse(self::$loader->loader('Hard\Lesson\guide'));
-    }
+//    public function testCaseSensitivity()
+//    {
+//        $this->assertFalse(self::$loader->loader('Hard\Lesson\guide'));
+//    }
 
     public function testNotExistsFile()
     {
