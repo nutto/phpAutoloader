@@ -6,6 +6,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
+        var_dump(__DIR__);
         require_once __DIR__ . '/../src/AutoLoaderClass.php';
 
         self::$loader = new AutoLoaderClass(__DIR__);

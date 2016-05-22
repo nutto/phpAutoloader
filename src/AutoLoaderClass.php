@@ -46,7 +46,7 @@ class AutoLoaderClass
      *
      * @param string $root_dir
      */
-    public function __construct(string $root_dir=__DIR__)
+    public function __construct($root_dir=__DIR__)
     {
         self::$root_dir = $root_dir;
     }
@@ -58,7 +58,7 @@ class AutoLoaderClass
      * @param string $dir
      * @param bool $prepend
      */
-    public function mapNamespace(string $prefix, string $dir, bool $prepend=false)
+    public function mapNamespace($prefix, $dir, $prepend=false)
     {
         // 由于自动加载函数回调传参是完全限定的,所以为了后续处理的统一
         // 前后的斜杠和无关的字符都去除
