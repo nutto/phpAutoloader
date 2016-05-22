@@ -8,5 +8,9 @@
             "email": "nutto.pan@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "keywords":    [ "autoloader", "simple", "PSR-4", "namespace" ],
+    "autoload": {
+        "psr-4": { "": "src/" }
+    }
 }
