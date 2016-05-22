@@ -62,8 +62,8 @@ class AutoLoaderClass
     {
         // 由于自动加载函数回调传参是完全限定的,所以为了后续处理的统一
         // 前后的斜杠和无关的字符都去除
-        $prefix = trim($prefix, " \t\n\r\0\x0B\\");
-        $dir = rtrim(trim($dir), '\\');
+        $prefix = trim($prefix, " \t\n\r\0\x0B\\/");
+        $dir = rtrim(trim($dir), '\\/');
 
         // 初始化不存在的映射
         if (!isset($this->mapped_prefix[$prefix])) {
@@ -88,7 +88,7 @@ class AutoLoaderClass
         $prefix = $class;
 
         // 先查看是否存在有映射的路径的命名空间
-        while (($pos = strrpos($prefix, '\\')) !== false) {
+        while (($pos = strrpos($prefix, '/')) !== false) {
             $relative_path = substr($class, $pos + 1);
             $prefix = substr($class, 0, $pos);
 
@@ -99,7 +99,7 @@ class AutoLoaderClass
         }
 
         // 尝试通过默认的路径加载文件
-        $file = self::$root_dir . '\\' . $class . '.php';
+        $file = self::$root_dir . '/' . $class . '.php';
         if ($this->requireFile($file)) {
             return $file;
         }
@@ -118,7 +118,7 @@ class AutoLoaderClass
     public function loadMappedFile($prefix, $relative_path) {
         if (isset($this->mapped_prefix[$prefix])) {
             foreach ($this->mapped_prefix[$prefix] as $root_dir) {
-                $file = $root_dir . '\\' . $relative_path . '.php';
+                $file = $root_dir . '/' . $relative_path . '.php';
                 if ($this->requireFile($file)) {
                     return $file;
                 }

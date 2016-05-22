@@ -6,20 +6,20 @@ class BaseTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        require_once __DIR__ . '\..\src\AutoLoaderClass.php';
+        require_once __DIR__ . '/../src/AutoLoaderClass.php';
 
         self::$loader = new AutoLoaderClass(__DIR__);
 
-        self::$loader->mapNamespace('Hard\Lesson', __DIR__ . '\Study\Math');
-        self::$loader->mapNamespace('Hard\Lesson', __DIR__ . '\Study\History');
-        self::$loader->mapNamespace('MostHomework\Lesson', __DIR__ . '\Study\Physics');
+        self::$loader->mapNamespace('Hard\Lesson', __DIR__ . '/Study/Math');
+        self::$loader->mapNamespace('Hard\Lesson', __DIR__ . '/Study/History');
+        self::$loader->mapNamespace('MostHomework\Lesson', __DIR__ . '/Study/Physics');
 
         self::$loader->register();
     }
 
     public function testMapNamespace()
     {
-        self::$loader->mapNamespace('Easy\Lesson', __DIR__ . '\Study\English');
+        self::$loader->mapNamespace('Easy\Lesson', __DIR__ . '/Study/English');
     }
 
     /**
@@ -33,7 +33,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
     public function rootDirProvider()
     {
         return array(
-            array('Guide', __DIR__ . '\Guide.php'),
+            array('Guide', __DIR__ . '/Guide.php'),
         );
     }
 
@@ -48,9 +48,9 @@ class BaseTest extends PHPUnit_Framework_TestCase
     public function subDirProvider()
     {
         return array(
-            array('Study\Guide', __DIR__ . '\Study\Guide.php'),
-            array('Study\Math\Guide', __DIR__ . '\Study\Math\Guide.php'),
-            array('Study\English\Guide', __DIR__ . '\Study\English\Guide.php'),
+            array('Study\Guide', __DIR__ . '/Study/Guide.php'),
+            array('Study\Math\Guide', __DIR__ . '/Study/Math/Guide.php'),
+            array('Study\English\Guide', __DIR__ . '/Study/English/Guide.php'),
         );
     }
 
@@ -65,7 +65,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
     public function mappedProvider()
     {
         return array(
-            array('Hard\Lesson\Guide', __DIR__ . '\Study\Math\Guide.php'),
+            array('Hard\Lesson\Guide', __DIR__ . '/Study/Math/Guide.php'),
         );
     }
 
@@ -73,13 +73,12 @@ class BaseTest extends PHPUnit_Framework_TestCase
     {
         $this->assertSame(self::$loader->loader(
             'Hard\Lesson\Homework'),
-            __DIR__ . '\Study\History\Homework.php'
+            __DIR__ . '/Study/History/Homework.php'
         );
     }
 
 //    public function testCaseSensitivity()
 //    {
-//        var_dump(self::$loader->loader('Hard\Lesson\guide'));
 //        $this->assertFalse(self::$loader->loader('Hard\Lesson\guide'));
 //    }
 
