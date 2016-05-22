@@ -1,0 +1,12 @@
+{
+    "name": "nutto/phpautoloader",
+    "description": "An inplement of php autoload",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nutto",
+            "email": "nutto.pan@gmail.com"
+        }
+    ],
+    "require": {}
+}
