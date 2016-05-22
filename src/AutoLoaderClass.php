@@ -88,7 +88,7 @@ class AutoLoaderClass
         $prefix = $class;
 
         // 先查看是否存在有映射的路径的命名空间
-        while (($pos = strrpos($prefix, '/')) !== false) {
+        while (($pos = strrpos($prefix, '\\')) !== false) {
             $relative_path = substr($class, $pos + 1);
             $prefix = substr($class, 0, $pos);
 

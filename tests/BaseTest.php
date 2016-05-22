@@ -37,58 +37,58 @@ class BaseTest extends PHPUnit_Framework_TestCase
         );
     }
 
-//    /**
-//     * @dataProvider subDirProvider
-//     */
-//    public function testSubDirFile($class, $expected_dir)
-//    {
-//        $this->assertSame(self::$loader->loader($class), $expected_dir);
-//    }
-//
-//    public function subDirProvider()
-//    {
-//        return array(
-//            array('Study\Guide', __DIR__ . '/Study/Guide.php'),
-//            array('Study\Math\Guide', __DIR__ . '/Study/Math/Guide.php'),
-//            array('Study\English\Guide', __DIR__ . '/Study/English/Guide.php'),
-//        );
-//    }
-//
-//    /**
-//     * @dataProvider mappedProvider
-//     */
-//    public function testMappedFile($class, $expected_dir)
-//    {
-//        $this->assertSame(self::$loader->loader($class), $expected_dir);
-//    }
-//
-//    public function mappedProvider()
-//    {
-//        return array(
-//            array('Hard\Lesson\Guide', __DIR__ . '/Study/Math/Guide.php'),
-//        );
-//    }
-//
-//    public function testMultiMappedFile()
-//    {
-//        $this->assertSame(self::$loader->loader(
-//            'Hard\Lesson\Homework'),
-//            __DIR__ . '/Study/History/Homework.php'
-//        );
-//    }
+    /**
+     * @dataProvider subDirProvider
+     */
+    public function testSubDirFile($class, $expected_dir)
+    {
+        $this->assertSame(self::$loader->loader($class), $expected_dir);
+    }
 
-//    public function testCaseSensitivity()
-//    {
-//        $this->assertFalse(self::$loader->loader('Hard\Lesson\guide'));
-//    }
+    public function subDirProvider()
+    {
+        return array(
+            array('Study\Guide', __DIR__ . '/Study/Guide.php'),
+            array('Study\Math\Guide', __DIR__ . '/Study/Math/Guide.php'),
+            array('Study\English\Guide', __DIR__ . '/Study/English/Guide.php'),
+        );
+    }
 
-//    public function testNotExistsFile()
-//    {
-//        $this->assertFalse(self::$loader->loader('\Study\Biology\Guide'));
-//    }
-//
-//    public function testFinalEffect()
-//    {
-//        new MostHomework\Lesson\Guide();
-//    }
+    /**
+     * @dataProvider mappedProvider
+     */
+    public function testMappedFile($class, $expected_dir)
+    {
+        $this->assertSame(self::$loader->loader($class), $expected_dir);
+    }
+
+    public function mappedProvider()
+    {
+        return array(
+            array('Hard\Lesson\Guide', __DIR__ . '/Study/Math/Guide.php'),
+        );
+    }
+
+    public function testMultiMappedFile()
+    {
+        $this->assertSame(self::$loader->loader(
+            'Hard\Lesson\Homework'),
+            __DIR__ . '/Study/History/Homework.php'
+        );
+    }
+
+    public function testCaseSensitivity()
+    {
+        $this->assertFalse(self::$loader->loader('Hard\Lesson\guide'));
+    }
+
+    public function testNotExistsFile()
+    {
+        $this->assertFalse(self::$loader->loader('\Study\Biology\Guide'));
+    }
+
+    public function testFinalEffect()
+    {
+        new MostHomework\Lesson\Guide();
+    }
 }
